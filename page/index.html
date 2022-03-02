@@ -4,39 +4,126 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
-
-h1 {
-    display: block;
-    color: lightblue;
-    text-align: center;
-    padding-top: 10;
+.buttonload {
+  background-color: #818181; 
+  border: none; 
+  border-radius: 20px;
+  color: white; 
+  padding: 12px 16px; 
+  font-size: 16px;
+  position: absolute;
+  left: 50%;
+  top: 150px;
+  transform: translateX(-50%);
 }
 
-ul {
-    font-size: large;
-    color: darkblue;
+body {
+  position: relative; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-ul, h2{
-    padding-left: 15%;
+.btnHome{ 
+  border: none; 
+  color: gray;
+  padding: 12px 16px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  border-radius: 5px;
+  position: fixed;
+  top: 20px;
+  right: 40px;
 }
 
+.btnHome:hover {  
+  background-color: grey;
+  color: aliceblue;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%; 
+  width: 100%; 
+  text-align: center; 
+  margin-top: 30px; 
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; 
+  transition: 0.3s; 
+}
+
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
 </style>
 
-    
 </head>
 <body>
-    <h1>Welcome to my Website</h1>
-    <h2>My Team :</h2>
-    <ul>
-        <li>Naufal Aulia</li>
-        <li>Danish Maula Hasbi</li>
-        <li>Reyhan Akbar</li>
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <a href="/">Home</a>
+      <a href="/contact">Contact</a>
+      <a href="/about">About</a>
+    </div>
+  </div>
+
+  <button class="btnHome" onclick="openNav()"><i class="fa fa-bars"></i></button>
+
+  <button class="buttonload">
+  <i class="fa fa-spinner fa-spin"></i>Loading
+  </button>
+
+
+      <script>
+        function openNav() {
+          document.getElementById("myNav").style.width = "100%";
+        }
         
-    </ul>
-    
+        function closeNav() {
+          document.getElementById("myNav").style.width = "0%";
+        }
+        </script>
 </body>
 </html>
