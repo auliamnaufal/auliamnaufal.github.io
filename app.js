@@ -23,13 +23,13 @@ http.createServer((req, res) => {
 
 	switch(url) {
 		case '/about':
-			renderHTML('./page/about.html', res)
+			renderHTML('./about.html', res)
 			break
 		case '/contact':
-			renderHTML('./page/contact.html', res)
+			renderHTML('./contact.html', res)
 			break
 		default:
-			renderHTML('./page/index.html', res)
+			renderHTML('./index.html', res)
 			break
 	}
 
