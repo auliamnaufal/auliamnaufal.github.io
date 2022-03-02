@@ -1,23 +1,38 @@
-const http = require("http");
+const http = require('http')
 const fs = require('fs')
+const port = 3000
 
-const requestListener = (req, res) => {
-	req.setHeader("Content-Type", "text/html");
-
-	const { method, url } = req
-
-	if (url === '/') {
-		fs.writeFile('index.html')
-		
-	}
+const renderHTML = (path, res) => {
+fs.readFile(path, (err, data) => {
+if(err){
+res.writeHead(404)
+res.write('Error, Page Not Found')
+} else {
+res.write(data)
+}
+res.end()
+})
 }
 
-const server = http.createServer(requestListener)
+http.createServer((req, res) => {
+	res.writeHead(200, {
+		'Content-Type' : 'text/html'
+	})
+	const url = req.url
 
-const port = 3000
-const host = 'localhost'
 
-server.listen(port, host, () => {
-	console.log(`Server berjalan pada port ${port}`)
+	switch(url) {
+		case '/about':
+			renderHTML('./about.html', res)
+			break
+		case '/info':
+			renderHTML('./info.html', res)
+			break
+		default:
+			renderHTML('./index.html', res)
+			break
+	}
+
+}) .listen(port, () => {
+	console.log(`Server is listening on port ${port}...`)
 })
-
