@@ -3,15 +3,15 @@ const fs = require('fs')
 const port = 3000
 
 const renderHTML = (path, res) => {
-fs.readFile(path, (err, data) => {
-if(err){
-res.writeHead(404)
-res.write('Error, Page Not Found')
-} else {
-res.write(data)
-}
-res.end()
-})
+	fs.readFile(path, (err, data) => {
+		if(err){
+			res.writeHead(404)
+			res.write('Error, Page Not Found')
+		} else {
+			res.write(data)
+		}
+		res.end()
+	})
 }
 
 http.createServer((req, res) => {
@@ -23,13 +23,13 @@ http.createServer((req, res) => {
 
 	switch(url) {
 		case '/about':
-			renderHTML('./about.html', res)
+			renderHTML('./page/about.html', res)
 			break
 		case '/info':
 			renderHTML('./info.html', res)
 			break
 		default:
-			renderHTML('./index.html', res)
+			renderHTML('./page/index.html', res)
 			break
 	}
 
